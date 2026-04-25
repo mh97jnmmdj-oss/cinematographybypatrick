@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinematography by Patrick</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        dark: '#050505',
+                        brand: '#e5e5e5',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e5e5e5;
+        }
+        /* Cinematic grain overlay */
+        .film-grain {
+            position: relative;
+        }
+        .film-grain::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 10;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        
+        .img-zoom {
+            transition: transform 0.7s ease;
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased film-grain">
+
+    <!-- Header / Nav -->
+    <header class="fixed w-full z-50 top-0 bg-dark/80 backdrop-blur-md border-b border-white/5 transition-all">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <a href="#" class="font-serif text-xl tracking-widest text-white hover:text-gray-400 transition-colors">Cinematography by Patrick</a>
+            <nav class="hidden md:flex space-x-10 text-sm tracking-wider uppercase">
+                <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
+                <a href="#documentaries" class="text-gray-400 hover:text-white transition-colors">Documentaries</a>
+                <a href="#photography" class="text-gray-400 hover:text-white transition-colors">Photography</a>
+                <a href="#social-posts" class="text-gray-400 hover:text-white transition-colors">Social Postings</a>
+                <a href="#socials" class="text-gray-400 hover:text-white transition-colors">Connect</a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0a0a0a] border-t border-white/5 px-6 py-6 flex flex-col space-y-6 text-center shadow-2xl">
+            <a href="#about" class="mobile-link text-gray-300 hover:text-white uppercase tracking-widest text-sm transition-colors">About</a>
+            <a href="#documentaries" class="mobile-link text-gray-300 hover:text-white uppercase tracking-widest text-sm transition-colors">Documentaries</a>
+            <a href="#photography" class="mobile-link text-gray-300 hover:text-white uppercase tracking-widest text-sm transition-colors">Photography</a>
+            <a href="#social-posts" class="mobile-link text-gray-300 hover:text-white uppercase tracking-widest text-sm transition-colors">Social Postings</a>
+            <a href="#socials" class="mobile-link text-gray-300 hover:text-white uppercase tracking-widest text-sm transition-colors">Connect</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Hero Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="Hero-image.JPG" alt="Hero Background" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+            <h2 class="text-sm md:text-base tracking-[0.3em] uppercase text-gray-400 mb-6">Welcome to</h2>
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight">
+                Cinematography <br><span class="italic font-light text-gray-300 text-4xl md:text-6xl">by Patrick</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto mb-10">
+                Capturing light, motion, and the raw emotion of the human experience through the lens.
+            </p>
+            <a href="INSERT_YOUR_URL_HERE" class="inline-block border border-white/30 px-8 py-4 uppercase tracking-widest text-sm hover:bg-white hover:text-dark transition-all duration-300">
+                View More
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto border-b border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+                <h2 class="font-serif text-4xl md:text-5xl mb-6">About Patrick</h2>
+                <div class="w-12 h-px bg-white/30 mb-8"></div>
+                <p class="text-lg text-gray-300 font-light mb-6 leading-relaxed">
+                   Patrick Civitelli is an award winning Director and cinematographer. He is most known for his documentaries "Roma WWF Superstar to teacher" And "Ascending Beyond Shadows"
+                </p>
+                <p class="text-lg text-gray-300 font-light leading-relaxed">
+                   Patrick Graduated from Masuk High School in 2022. Currently he is enrolled at Southern Connecticut state university. His major is communication with a concentration in Film and Television, and he is minoring in Journalism.For over eight years, pATRICK has been capturing photographs and videos. he is always learning new equipment to stay current with the latest technology. he holds a Part 107 drone license, and for his drone work and he uses the DJI Mini 3 and the DJI Air 3. For photographs and videos, he primarily use a Sony FX6 with a sirui 50mm anamorphic lens, the Sony a7iii with a 28-70 mm lens and the Canon C70. On occasion, he opts to use a iPhone 16 Pro Max for quick shots.  he has over eight years of experience of editing videos using a variety of different video editing software's. Patrick is proficient in adobe premiere pro and photoshop. He also has experience using other softwares like Final Cut Pro and Davinci resolve 
+                </p>
+            </div>
+            <div class="order-1 lg:order-2 relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-white/10">
+                <img src="About-me.jpg" alt="Patrick Civitelli Portrait" class="w-full h-full object-cover img-zoom opacity-80">
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Reel Section -->
+    <section id="demo-reel" class="py-24 px-6 max-w-7xl mx-auto border-b border-white/5">
+        <div class="text-center mb-16">
+            <h2 class="font-serif text-4xl md:text-5xl mb-4">Demo Reel</h2>
+            <div class="w-12 h-px bg-white/30 mx-auto"></div>
+        </div>
+        <a href="https://youtu.be/xDtGw95qgNA?si=9xW5l4L8YXxqDKG6" target="_blank" rel="noopener noreferrer" class="group cursor-pointer block relative max-w-5xl mx-auto overflow-hidden rounded-xl shadow-2xl border border-white/10 aspect-video">
+            <img src="https://img.youtube.com/vi/xDtGw95qgNA/maxresdefault.jpg" alt="Demo Reel Thumbnail" class="w-full h-full object-cover img-zoom opacity-80">
+            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <i class="fa-solid fa-play text-3xl md:text-4xl ml-2"></i>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <!-- Documentaries Section -->
+    <section id="documentaries" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="font-serif text-4xl md:text-5xl mb-4">Documentaries Directed</h2>
+            <div class="w-12 h-px bg-white/30 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <!-- Doc 1: If Not Us -->
+            <a href="https://youtu.be/6Xs_GxLTQ94?si=qbu1WcD50ONz0Gqm" target="_blank" rel="noopener noreferrer" class="group cursor-pointer block">
+                <div class="overflow-hidden relative aspect-video rounded-xl mb-4 shadow-lg border border-white/10">
+                    <img src="https://img.youtube.com/vi/6Xs_GxLTQ94/maxresdefault.jpg" alt="Documentary Poster" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                            <i class="fa-solid fa-play text-white ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="font-serif text-2xl mb-1 group-hover:text-white text-gray-200 transition-colors">If Not Us</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-wider">Documentary • Coming Late 2026</p>
+                <p class="text-sm text-gray-400 mt-3 font-light leading-relaxed">If Not Us is a compelling documentary centered on the student-led movement to end school shootings. Highlighting the voices of those who have experienced these tragedies firsthand—alongside a generation that refuses to accept the status quo—the film explores the powerful intersection of grief and activism. It offers an inspiring look at how young survivors and passionate advocates are finding their courage, confronting systemic inaction, and bravely answering the call for change.</p>
+            </a>
+
+            <!-- Doc 2: Paranormal Pursuits -->
+            <a href="https://youtu.be/V4xr0ySMQyo?si=nBTD4_0pt3Qlf666" target="_blank" rel="noopener noreferrer" class="group cursor-pointer block">
+                <div class="overflow-hidden relative aspect-video rounded-xl mb-4 shadow-lg border border-white/10">
+                    <img src="https://img.youtube.com/vi/V4xr0ySMQyo/maxresdefault.jpg" alt="Documentary Poster" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                            <i class="fa-solid fa-play text-white ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="font-serif text-2xl mb-1 group-hover:text-white text-gray-200 transition-colors">Paranormal Pursuits</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-wider">Short • 2025</p>
+                <p class="text-sm text-gray-400 mt-3 font-light leading-relaxed">"Paranormal Pursuits" is about a haunted library in Middlefield CT. My team and I spent the night to find out if it was truly haunted....</p>
+            </a>
+
+            <!-- Doc 3: Ascending Beyond Shadows -->
+            <a href="https://youtu.be/hFXTzeEEL3I?si=56AtlUDRASGXJGny" target="_blank" rel="noopener noreferrer" class="group cursor-pointer block">
+                <div class="overflow-hidden relative aspect-video rounded-xl mb-4 shadow-lg border border-white/10">
+                    <img src="https://img.youtube.com/vi/hFXTzeEEL3I/maxresdefault.jpg" alt="Documentary Poster" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                            <i class="fa-solid fa-play text-white ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="font-serif text-2xl mb-1 group-hover:text-white text-gray-200 transition-colors">Ascending Beyond Shadows</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-wider">Short Doc • 2025</p>
+                <p class="text-sm text-gray-400 mt-3 font-light leading-relaxed">"Ascending Beyond Shadows" is a documentary about rock climbing. This documentary follows Tristin as he uses rock climbing to deal with hardships in his life in a positive way through this hobby.
+Equipment Used: Sony a7iii, Dji air 3, Dji wireless mics
+Edited on: adobe premiere </p>
+            </a>
+
+            <!-- Doc 4: Roma WWF Superstar to Teacher -->
+            <a href="https://youtu.be/aeteyREiOv0?si=fZYRngfnvcftyX8T" target="_blank" rel="noopener noreferrer" class="group cursor-pointer block">
+                <div class="overflow-hidden relative aspect-video rounded-xl mb-4 shadow-lg border border-white/10">
+                    <img src="https://img.youtube.com/vi/aeteyREiOv0/maxresdefault.jpg" alt="Documentary Poster" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                            <i class="fa-solid fa-play text-white ml-1"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="font-serif text-2xl mb-1 group-hover:text-white text-gray-200 transition-colors">Roma WWF Superstar to Teacher</h3>
+                <p class="text-sm text-gray-500 uppercase tracking-wider">Short Doc • 2024</p>
+                <p class="text-sm text-gray-400 mt-3 font-light leading-relaxed">"Roma WWF Star to Teacher: A Mini Documentary" is the story of Paul Roma, a former WWF wrestler. The documentary shows how he turned his success in the ring into an opportunity to mentor students. He shares personal stories about wrestling and how that led him to teach students. Not only does he coach his student to be the best they can be he also teaches valuable life lessons . 
+Equipment used: Canon C70, Atmos Ninja V, Monitor Rode Wireless GO II, Dracast lights.
+Edited on: Adobe Premiere </p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Photography CTA Section -->
+    <section id="photography" class="py-32 px-6 max-w-7xl mx-auto border-t border-b border-white/5 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="font-serif text-4xl md:text-5xl mb-6">Photography</h2>
+            <div class="w-12 h-px bg-white/30 mx-auto mb-8"></div>
+            <p class="text-lg text-gray-400 font-light mb-10 leading-relaxed">
+                Explore my complete gallery of still photography, capturing the raw emotion and striking visuals of the world around us.
+            </p>
+            <a href="INSERT_YOUR_PHOTOGRAPHY_LINK_HERE" target="_blank" rel="noopener noreferrer" class="inline-block border border-white/30 px-10 py-5 uppercase tracking-widest text-sm hover:bg-white hover:text-dark transition-all duration-300">
+                Click here to see photography
+            </a>
+        </div>
+    </section>
+
+    <!-- Professional Campaigns Section (Hidden from Main Nav) -->
+    <section class="py-24 px-6 max-w-7xl mx-auto border-b border-white/5">
+        <div class="text-center mb-20">
+            <h2 class="font-serif text-4xl md:text-5xl mb-4">Professional Campaigns</h2>
+            <div class="w-12 h-px bg-white/30 mx-auto"></div>
+        </div>
+
+        <!-- Campaign 1: National Intern Day -->
+        <div class="mb-24">
+            <h3 class="font-serif text-3xl md:text-4xl mb-6 text-white">National Intern Day</h3>
+            <div class="max-w-4xl mb-12">
+                <p class="text-lg text-gray-300 font-light leading-relaxed">
+                    Me and another intern collaborated to create a social media campaign to showcase interns from our U.S. offices. We had them create “Day in my Life videos” that gave followers an inside look at their daily tasks and fun events HARMAN holds. We interviewed interns about their favorite projects at the Novi office. To creatively summarize their experiences, we designed infographics featuring a single word that captured their time at HARMAN. The campaign was supported by a blog post on the company's official website.
+                </p>
+            </div>
+            
+            <!-- Media Embed Placeholders -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                
+                <!-- YouTube Video Placeholder -->
+                <div class="w-full">
+                    <p class="text-sm text-gray-500 uppercase tracking-wider mb-3"><i class="fa-brands fa-youtube mr-2"></i>YouTube Feature</p>
+                    <a href="https://youtube.com/playlist?list=PLa4tJRmbiKuh7QD1oVL21nOWkZrZ2jMQr&si=S3ercz4c9l0wX3mu" target="_blank" rel="noopener noreferrer" class="group cursor-pointer block">
+                        <div class="overflow-hidden relative aspect-video rounded-xl shadow-lg border border-white/10">
+                            <img src="NID.PNG" alt="YouTube Video" class="w-full h-full object-cover img-zoom opacity-90">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-500"></div>
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                <div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+                                    <i class="fa-solid fa-play text-white ml-1"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Instagram Reel Placeholder -->
+                <div class="w-full md:max-w-[300px] mx-auto">
+                    <p class="text-sm text-gray-500 uppercase tracking-wider mb-3"><i class="fa-brands fa-instagram mr-2"></i>Instagram Reel</p>
+                    <a href="https://www.instagram.com/reel/DMyisGnArMK/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" class="group cursor-pointer block">
+                        <div class="overflow-hidden relative aspect-[9/16] rounded-xl shadow-lg border border-white/10 bg-[#111]">
+                            <img src="DIMLM.png" alt="Instagram Reel" class="w-full h-full object-cover img-zoom opacity-90 group-hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                                <i class="fa-solid fa-play text-4xl text-white/80 drop-shadow-lg"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Facebook Post Placeholder -->
+                <div class="w-full">
+                    <p class="text-sm text-gray-500 uppercase tracking-wider mb-3"><i class="fa-brands fa-facebook mr-2"></i>Facebook Post</p>
+                    <a href="https://www.facebook.com/share/v/1BeMijh8qN/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="group cursor-pointer block">
+                        <div class="overflow-hidden relative aspect-square rounded-xl shadow-lg border border-white/10 bg-[#111]">
+                            <img src="DIMLR.png" alt="Facebook Post" class="w-full h-full object-cover img-zoom opacity-90 group-hover:opacity-100 transition-opacity">
+                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                                <i class="fa-solid fa-image text-4xl text-white/80 drop-shadow-lg"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Campaign 2: Make Music Day -->
+        <div>
+            <h3 class="font-serif text-3xl md:text-4xl mb-6 text-white">Make Music Day</h3>
+            <div class="max-w-4xl mb-12">
+                <p class="text-lg text-gray-300 font-light leading-relaxed">
+                    Social media video reel I edited in collaboration with Harman/JBL, Dolby Labs & Make music day.
+                </p>
+            </div>
+            
+            <div class="w-full md:max-w-[400px]">
+                <p class="text-sm text-gray-500 uppercase tracking-wider mb-3"><i class="fa-brands fa-instagram mr-2"></i>Instagram Post</p>
+                <a href="https://www.instagram.com/reel/DLLMRquJ_EH/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" class="group cursor-pointer block">
+                    <div class="overflow-hidden relative aspect-[4/5] rounded-xl shadow-lg border border-white/10 bg-[#111]">
+                        <img src="MMD.png" alt="Instagram Post" class="w-full h-full object-cover img-zoom opacity-90 group-hover:opacity-100 transition-opacity">
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                            <i class="fa-brands fa-instagram text-5xl text-white/80 drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Posts Section -->
+    <section id="social-posts" class="py-24 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="font-serif text-4xl md:text-5xl mb-4">Top Social Media Postings</h2>
+                    <div class="w-12 h-px bg-white/30"></div>
+                </div>
+                <a href="https://www.tiktok.com/@cinematographybypatrick?_r=1&_t=ZT-95q7qAVVpvy" target="_blank" rel="noopener noreferrer" class="mt-6 md:mt-0 text-sm tracking-widest uppercase text-gray-400 hover:text-white transition-colors border-b border-transparent hover:border-white pb-1">
+                    <i class="fa-brands fa-tiktok mr-2"></i>Follow on TikTok
+                </a>
+            </div>
+
+            <!-- Social Feed Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Post 1 -->
+                <a href="https://www.tiktok.com/t/ZTkXNdtpc/" target="_blank" rel="noopener noreferrer" class="group block bg-dark border border-white/5 hover:border-white/20 transition-colors rounded-lg overflow-hidden">
+                    <div class="aspect-[9/16] relative overflow-hidden bg-[#111] flex items-center justify-center">
+                        <img src="Large View.png" class="w-full h-full object-cover img-zoom opacity-90 group-hover:opacity-100 transition-opacity" alt="TikTok Post">
+                        <div class="absolute top-3 right-3 text-white drop-shadow-md"><i class="fa-brands fa-tiktok text-xl"></i></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                            <i class="fa-solid fa-play text-4xl text-white/80 drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-sm text-gray-400 line-clamp-3">Post 1 with over 615k views</p>
+                    </div>
+                </a>
+
+                <!-- Post 2 -->
+                <a href="https://www.tiktok.com/t/ZTkXNdtpc/" target="_blank" rel="noopener noreferrer" class="group block bg-dark border border-white/5 hover:border-white/20 transition-colors rounded-lg overflow-hidden">
+                    <div class="aspect-[9/16] relative overflow-hidden bg-[#111] flex items-center justify-center">
+                        <img src="Large View 2.png" class="w-full h-full object-cover img-zoom opacity-90 group-hover:opacity-100 transition-opacity" alt="TikTok Post">
+                        <div class="absolute top-3 right-3 text-white drop-shadow-md"><i class="fa-brands fa-tiktok text-xl"></i></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                            <i class="fa-solid fa-play text-4xl text-white/80 drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-sm text-gray-400 line-clamp-3">Post 2 with 389.3k views</p>
+                    </div>
+                </a>
+
+                <!-- Post 3 -->
+                <a href="https://www.tiktok.com/t/ZTkXNyruw/" target="_blank" rel="noopener noreferrer" class="group block bg-dark border border-white/5 hover:border-white/20 transition-colors rounded-lg overflow-hidden">
+                    <div class="aspect-[9/16] relative overflow-hidden bg-[#111] flex items-center justify-center">
+                        <img src="https://placehold.co/1080x1920/1a1a1a/e5e5e5?text=Insert+TikTok+3+Image+Here" class="w-full h-full object-cover img-zoom opacity-90 group-hover:opacity-100 transition-opacity" alt="TikTok Post">
+                        <div class="absolute top-3 right-3 text-white drop-shadow-md"><i class="fa-brands fa-tiktok text-xl"></i></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                            <i class="fa-solid fa-play text-4xl text-white/80 drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-sm text-gray-400 line-clamp-3">Post 3 with 26.1k views</p>
+                    </div>
+                </a>
+
+                <!-- Post 4 -->
+                <a href="https://www.tiktok.com/t/ZTkXNuaNp/" target="_blank" rel="noopener noreferrer" class="group block bg-dark border border-white/5 hover:border-white/20 transition-colors rounded-lg overflow-hidden">
+                    <div class="aspect-[9/16] relative overflow-hidden bg-[#111] flex items-center justify-center">
+                        <img src="https://placehold.co/1080x1920/1a1a1a/e5e5e5?text=Insert+TikTok+4+Image+Here" class="w-full h-full object-cover img-zoom opacity-90 group-hover:opacity-100 transition-opacity" alt="TikTok Post">
+                        <div class="absolute top-3 right-3 text-white drop-shadow-md"><i class="fa-brands fa-tiktok text-xl"></i></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                            <i class="fa-solid fa-play text-4xl text-white/80 drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-sm text-gray-400 line-clamp-3">Post 4 with 21.9k views</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Socials / Footer Section -->
+    <footer id="socials" class="py-32 px-6 border-t border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-10">
+            <img src="https://placehold.co/1920x1080/1a1a1a/1a1a1a?text=Insert+Footer+Background+Image+Here" alt="" class="w-full h-full object-cover blur-sm">
+        </div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <h2 class="font-serif text-3xl md:text-5xl mb-8">Let's Create Together.</h2>
+            <p class="text-gray-400 mb-12 font-light text-lg">Available for freelance opportunities.</p>
+            
+            <div class="flex justify-center space-x-8 md:space-x-12 mb-16">
+                <a href="https://www.instagram.com/cinematographybypatrick?igsh=MTR4cW1najlobnB1Yw%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all transform hover:-translate-y-1">
+                    <i class="fa-brands fa-instagram text-3xl md:text-4xl"></i>
+                </a>
+                <a href="https://www.tiktok.com/@cinematographybypatrick?_r=1&_t=ZT-95q9K87pF66" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all transform hover:-translate-y-1">
+                    <i class="fa-brands fa-tiktok text-3xl md:text-4xl"></i>
+                </a>
+                <a href="https://youtube.com/@cinematographybypatrick?si=te3Dt7PPUZ_2DJvw" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all transform hover:-translate-y-1">
+                    <i class="fa-brands fa-youtube text-3xl md:text-4xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/patrickcivitelli?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-all transform hover:-translate-y-1">
+                    <i class="fa-brands fa-linkedin-in text-3xl md:text-4xl"></i>
+                </a>
+                <a href="mailto:cinematographybypatrick@gmail.com" class="text-gray-400 hover:text-white transition-all transform hover:-translate-y-1">
+                    <i class="fa-regular fa-envelope text-3xl md:text-4xl"></i>
+                </a>
+            </div>
+            
+            <div class="text-sm text-gray-600 tracking-wider">
+                &copy; 2026 CINEMATOGRAPHY BY PATRICK. ALL RIGHTS RESERVED.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // Toggle menu and icon
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+
+        // Close menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
